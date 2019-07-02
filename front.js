@@ -5,7 +5,7 @@
 
 let workspace;
 
-createLedTable(nbRows, nbColumns);
+createLedTable(nbRows, nbColumns, disabled_pixels);
 initWorkspace();
 
 // Management of the received messages on websockets
@@ -62,6 +62,32 @@ $('#stop').on('click', function (e) {
     e.preventDefault();
     stop();
 });
+
+$('#config').on('click', function (e) {
+  e.preventDefault();
+  settingForm();
+  $('.overlay-popup3').fadeIn(200);
+  $("#setting-module").fadeIn(200, function () {
+       $('#setting-submit').on('click', function () {
+         saveSettings(
+          $('#setting-project').val(),
+          $('#setting-rows').val(),
+          $('#setting-cols').val(),
+          $('#setting-disabled').val()
+        );
+        setconfig(
+          $('#setting-project').val(),
+          $('#setting-rows').val(),
+          $('#setting-cols').val(),
+          $('#setting-disabled').val(),
+          true
+        );
+        createLedTable(nbRows, nbColumns);
+        $('#setting-module').fadeOut(200);
+        $('.overlay-popup3').fadeOut(200);
+       })
+  })
+})
 
 $('#import').on('click', function (e) {
     e.preventDefault();
@@ -198,17 +224,31 @@ function initWorkspace() {
 
 }
 
+function is_disabled(i,j){
+  for (let pos of disabled_pixels) {
+    if ((pos[0] == i) && (pos[1] == j)){
+      return true;
+    }
+  }
+  return false;
+}
+
 /**
  * Generate the HTML table of the pixels for the simulation
- * @param {Number} nbRows 
- * @param {Number} nbColumns 
+ * @param {Number} nbRows
+ * @param {Number} nbColumns
  */
 function createLedTable(nbRows, nbColumns) {
     let ledContainer = document.getElementById('led-table');
+    ledContainer.innerHTML = "";
     for (let i = 0; i < nbRows; i++) {
         let newRow = ledContainer.insertRow();
         for (let j = 0; j < nbColumns; j++) {
-            newRow.insertCell(j).innerHTML = `<div class="led" data-r="${i}" data-c="${j}" title="[${i},${j}]"></div>`;
+          if (is_disabled(i, j)) {
+            newRow.insertCell(j).innerHTML = `<div class="dled" data-r="${i}" data-c="${j}"></div>`;
+          } else {
+            newRow.insertCell(j).innerHTML = `<div class="led" data-r="${i}" data-c="${j}" title="[${i},${j}]"><span>[${i},${j}]</span></div>`;
+          }
         }
     }
 }

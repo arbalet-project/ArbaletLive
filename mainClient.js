@@ -2,20 +2,19 @@
  * @fileoverview This file contains the application's core functions (client-side on browser)
  */
 
-
 const socket = io();
 let granted = false;
 let isRunning = false;
 let updateTimer;
 let pixelsToUpdate = [];
 let blocklyWorker;
-let nbRows = 15;
-let nbColumns = 10;
 let sharedBuffer;
 let sharedArray;
 
 
+
 // Functions
+
 
 /**
  * Runs the blockly program and launch the grid autoupdate
@@ -97,6 +96,10 @@ function importWorkspace() {
     reader.readAsText(selectedFile);
 }
 
+/**
+ * Try to load an example file in the workspace
+ * @param {String} fileName the example file name
+ */
 function loadExemple(fileName){
     $.ajax({
         method: 'GET',
@@ -160,7 +163,7 @@ function generateScripts() {
         scripts["main"] += 'self.postMessage({message: "close"});close();' ;
     }
     return scripts;
-    
+
 }
 
 /**

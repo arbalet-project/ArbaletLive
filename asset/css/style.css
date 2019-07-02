@@ -441,6 +441,19 @@ body {
   .window-popup#export-module .input-window {
     margin-top: 15px; }
 
+.window-popup#setting-module {
+  display: none;
+  height: auto; }
+  .window-popup#setting-module .content {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center; }
+    .window-popup#setting-module .content p {
+      color: #7A7B7D; }
+  .window-popup#setting-module .input-window {
+    margin-top: 15px; }
+
 .full-screen {
   position: fixed;
   z-index: 100000 !important;

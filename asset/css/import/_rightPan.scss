@@ -1,4 +1,4 @@
-// RIGHT PAN STYLE 
+// RIGHT PAN STYLE
 
 .right-pan{
     background-color: $color-background-2;
@@ -66,7 +66,7 @@
             }
         }
     }
-    
+
     @keyframes liveBlink{
         from{
             opacity: 0;
@@ -75,7 +75,7 @@
             opacity: 1;
         }
     }
-    
+
     .led-content{
         margin-bottom: 75px;
     }

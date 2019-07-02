@@ -1,0 +1,7 @@
+{
+    "rows": 4,
+    "cols": 19,
+    "disabled": [[3, 5], [3, 6], [3, 7]],
+    "project": "Meki",
+    "simuation": false
+}
