@@ -8,11 +8,7 @@ Blockly.defineBlocksWithJsonArray([{
     "args0": [
       {
         "type": "input_value",
-        "name": "row"
-      },
-      {
-        "type": "input_value",
-        "name": "column"
+        "name": "pixel",
       },
       {
         "type": "input_value",
@@ -25,6 +21,28 @@ Blockly.defineBlocksWithJsonArray([{
     "nextStatement": null,
     "colour": 0,
     "tooltip": "%{BKY_COLOR_PIXEL_TOOLTIP}",
+    "helpUrl": ""
+  },
+  {
+    "type": "pixel_item",
+    "message0": "%{BKY_PIXEL_TITLE}",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ROW",
+        "check": "Number",
+        "align": "CENTRE"
+      },
+      {
+        "type": "input_value",
+        "name": "COL",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 0,
+    "tooltip": "%{BKY_PIXEL_TOOLTIP}",
     "helpUrl": ""
   },
   {
@@ -50,13 +68,7 @@ Blockly.defineBlocksWithJsonArray([{
     "args0": [
       {
         "type": "input_value",
-        "name": "row",
-        "check": "Number"
-      },
-      {
-        "type": "input_value",
-        "name": "column",
-        "check": "Number"
+        "name": "pixel",
       }
     ],
     "inputsInline": true,
@@ -98,13 +110,7 @@ Blockly.defineBlocksWithJsonArray([{
     "args0": [
       {
         "type": "input_value",
-        "name": "row",
-        "check": "Number"
-      },
-      {
-        "type": "input_value",
-        "name": "column",
-        "check": "Number"
+        "name": "pixel",
       }
     ],
     "inputsInline": true,

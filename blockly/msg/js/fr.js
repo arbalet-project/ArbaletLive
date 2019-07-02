@@ -6,17 +6,21 @@ goog.provide('Blockly.Msg.fr');
 
 goog.require('Blockly.Msg');
 
-//Ajout des blocs personnalisés 
+//Ajout des blocs personnalisés
 //Color pixel
-Blockly.Msg["COLOR_PIXEL_TITLE"] = "Colorer le pixel %1 %2 en %3";
+Blockly.Msg["COLOR_PIXEL_TITLE"] = "Colorer  %1 en %2";
 Blockly.Msg["COLOR_PIXEL_TOOLTIP"] = "Ajouter une ligne et une colonne, puis une couleur";
+
+//Pixel item
+Blockly.Msg["PIXEL_TITLE"] = " Pixel %1 %2";
+Blockly.Msg["PIXEL_TOOLTIP"] = "Définir un pixel par sa ligne et sa colonne";
 
 //Color all pixels
 Blockly.Msg["COLOR_ALL_PIXELS_TITLE"] = "Colorer tous les pixels en %1";
 Blockly.Msg["COLOR_ALL_PIXELS_TOOLTIP"] = "Choisir une couleur en cliquant";
 
-//Turn off the pixel 
-Blockly.Msg["TURN_OFF_THE_PIXEL_TITLE"] = "Eteindre le pixel en %1 %2";
+//Turn off the pixel
+Blockly.Msg["TURN_OFF_THE_PIXEL_TITLE"] = "Eteindre %1";
 Blockly.Msg["TURN_OFF_THE_PIXEL_TOOLTIP"] = "Ajouter une ligne et une colonne";
 
 //Turn off
@@ -36,7 +40,7 @@ Blockly.Msg["SLEEP_TITLE"] = "Attendre %1 %2";
 Blockly.Msg["SLEEP_TOOLTIP"] = "Choisir un temps et son unité de mesure";
 
 //Pixel color
-Blockly.Msg["PIXEL_COLOR_TITLE"] = "Couleur du pixel en %1 %2";
+Blockly.Msg["PIXEL_COLOR_TITLE"] = "Couleur de %1";
 Blockly.Msg["PIXEL_COLOR_TOOLTIP"] = "Ajouter une ligne et une colonne";
 
 Blockly.Msg["ADD_COMMENT"] = "Ajouter un commentaire";

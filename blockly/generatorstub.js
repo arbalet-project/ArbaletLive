@@ -3,12 +3,18 @@
  */
 
 Blockly.JavaScript['color_pixel'] = function(block) {
-  var value_row = Blockly.JavaScript.valueToCode(block, 'row', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_column = Blockly.JavaScript.valueToCode(block, 'column', Blockly.JavaScript.ORDER_ATOMIC);
+  //workspace.getAllVariables();
+  var pixel = Blockly.JavaScript.valueToCode(block, 'pixel', Blockly.JavaScript.ORDER_NONE);
   var value_color = Blockly.JavaScript.valueToCode(block, 'color', Blockly.JavaScript.ORDER_ATOMIC);
-
-  var code = `setPixel(${value_row},${value_column},${value_color});`;
+  var code = `setPixel(${pixel},${value_color});`;
   return code;
+};
+
+Blockly.JavaScript['pixel_item'] = function(block) {
+  var value_row = Blockly.JavaScript.valueToCode(block, 'ROW', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_col = Blockly.JavaScript.valueToCode(block, 'COL', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = `{'r':${value_row}, 'c':${value_col}}`;
+  return [code,  Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript['color_all_pixels'] = function(block) {
@@ -26,10 +32,9 @@ Blockly.JavaScript['turn_off'] = function(block) {
 
 
 Blockly.JavaScript['turn_off_the_pixel'] = function(block) {
-  var value_row = Blockly.JavaScript.valueToCode(block, 'row', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_column = Blockly.JavaScript.valueToCode(block, 'column', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_pixel = Blockly.JavaScript.valueToCode(block, 'pixel', Blockly.JavaScript.ORDER_ATOMIC);
 
-  var code = `switchOffPixel(${value_row},${value_column});`;
+  var code = `switchOffPixel(${value_pixel});`;
   return code;
 };
 
@@ -54,10 +59,9 @@ Blockly.JavaScript['sleep'] = function(block) {
 };
 
 Blockly.JavaScript['pixel_color'] = function(block) {
-  var value_row = Blockly.JavaScript.valueToCode(block, 'row', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_column = Blockly.JavaScript.valueToCode(block, 'column', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_pixel = Blockly.JavaScript.valueToCode(block, 'pixel', Blockly.JavaScript.ORDER_ATOMIC);
 
-  var code = `getPixelColor(${value_row},${value_column})`;
+  var code = `getPixelColor(${value_pixel})`;
 
   return [code, Blockly.JavaScript.ORDER_NONE];
 };

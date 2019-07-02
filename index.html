@@ -30,15 +30,31 @@
 
             <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
                 <category name="Arbalet" colour="#ff0000">
+                  <block type="pixel_item">
+                    <value name="ROW">
+                      <shadow type="math_number">
+                        <field name="NUM">0</field>
+                      </shadow>
+                    </value>
+                    <value name="COL">
+                      <shadow type="math_number">
+                        <field name="NUM">0</field>
+                      </shadow>
+                    </value>
+                  </block>
                     <block type="color_pixel">
-                      <value name="row">
-                        <shadow type="math_number">
-                          <field name="NUM">0</field>
-                        </shadow>
-                      </value>
-                      <value name="column">
-                        <shadow type="math_number">
-                          <field name="NUM">0</field>
+                      <value name="pixel" >
+                      <shadow type="pixel_item">
+                          <value name="ROW">
+                            <shadow type="math_number">
+                              <field name="NUM">0</field>
+                            </shadow>
+                          </value>
+                          <value name="COL">
+                            <shadow type="math_number">
+                              <field name="NUM">0</field>
+                            </shadow>
+                          </value>
                         </shadow>
                       </value>
                       <value name="color">
@@ -55,14 +71,18 @@
                       </value>
                     </block>
                     <block type="turn_off_the_pixel">
-                      <value name="row">
-                        <shadow type="math_number">
-                          <field name="NUM">0</field>
-                        </shadow>
-                      </value>
-                      <value name="column">
-                        <shadow type="math_number">
-                          <field name="NUM">0</field>
+                      <value name="pixel" >
+                      <shadow type="pixel_item">
+                          <value name="ROW">
+                            <shadow type="math_number">
+                              <field name="NUM">0</field>
+                            </shadow>
+                          </value>
+                          <value name="COL">
+                            <shadow type="math_number">
+                              <field name="NUM">0</field>
+                            </shadow>
+                          </value>
                         </shadow>
                       </value>
                     </block>
@@ -122,7 +142,22 @@
                     <field name="list">'s'</field>
                 </block>
                 </category>
-
+                <category name="Listes" colour="%{BKY_LISTS_HUE}">
+                  <block type="lists_create_empty"></block>
+                  <block type="lists_create_with"></block>
+                  <block type="lists_repeat">
+                    <value name="NUM">
+                      <block type="math_number">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                  </block>
+                  <block type="lists_length"></block>
+                  <block type="lists_isEmpty"></block>
+                  <block type="lists_indexOf"></block>
+                  <block type="lists_getIndex"></block>
+                  <block type="lists_setIndex"></block>
+                </category>
                 <category name="Maths" colour="#5b67a5">
                   <block type="math_number">
                     <field name="NUM">0</field>
@@ -210,14 +245,18 @@
                     </value>
                   </block>
                   <block type="pixel_color">
-                    <value name="row">
-                      <shadow type="math_number">
-                        <field name="NUM">0</field>
-                      </shadow>
-                    </value>
-                    <value name="column">
-                      <shadow type="math_number">
-                        <field name="NUM">0</field>
+                    <value name="pixel" >
+                    <shadow type="pixel_item">
+                        <value name="ROW">
+                          <shadow type="math_number">
+                            <field name="NUM">0</field>
+                          </shadow>
+                        </value>
+                        <value name="COL">
+                          <shadow type="math_number">
+                            <field name="NUM">0</field>
+                          </shadow>
+                        </value>
                       </shadow>
                     </value>
                   </block>

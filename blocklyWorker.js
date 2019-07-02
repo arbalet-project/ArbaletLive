@@ -2,10 +2,10 @@
  * @fileoverview This file is the script loaded by the worker that runs the blockly generated code
  */
 
-importScripts('charMap.js');
+//importScripts('charMap.js');
 
-let nbRows;
-let nbColumns;
+let nbrows;
+let nbcolumns;
 let gridState = [];
 
 let scripts;
@@ -19,9 +19,9 @@ let scripts;
 onmessage = function (e) {
     switch (e.data.message) {
         case 'gridLength':
-            nbRows = e.data.nbRows;
-            nbColumns = e.data.nbColumns;
-            for (let i = 0; i < nbRows; i++) {
+            nbrows = e.data.nbRows;
+            nbcolumns = e.data.nbColumns;
+            for (let i = 0; i < nbrows; i++) {
                 gridState[i] = [];
             }
             break;
@@ -49,8 +49,10 @@ onmessage = function (e) {
  * @param {Number} columnY The pixel's column in the grid
  * @param {String} color The color to set to the pixel
  */
-function setPixel(rowX, columnY, color) {
-    if ((rowX >= 0 && rowX < nbRows) && (columnY >= 0 && columnY < nbColumns)) {
+function setPixel(pixel, color) {
+  var rowX = pixel['r'];
+  var columnY = pixel['c'];
+    if ((rowX >= 0 && rowX < nbrows) && (columnY >= 0 && columnY < nbcolumns)) {
         self.postMessage({
             rowX: rowX,
             columnY: columnY,
@@ -65,17 +67,17 @@ function setPixel(rowX, columnY, color) {
  * @param {Number} rowX The pixel's row in the grid
  * @param {Number} columnY The pixel's column in the grid
  */
-function switchOffPixel(rowX, columnY) {
-    setPixel(rowX, columnY, '#000000');
+function switchOffPixel(pixel) {
+    setPixel(pixel, '#000000');
 }
 
 /**
  * Set all pixels off
  */
 function switchOffAllPixels() {
-    for (let i = 0; i < nbRows; i++) {
-        for (let j = 0; j < nbColumns; j++) {
-            switchOffPixel(i, j);
+    for (let i = 0; i < nbrows; i++) {
+        for (let j = 0; j < nbcolumns; j++) {
+            switchOffPixel({'r':i,'c':j});
         }
     }
 }
@@ -85,21 +87,23 @@ function switchOffAllPixels() {
  * @param {String} color The color to set to the pixel
  */
 function setAllPixels(color) {
-    for (let i = 0; i < nbRows; i++) {
-        for (let j = 0; j < nbColumns; j++) {
-            setPixel(i, j, color);
+    for (let i = 0; i < nbrows; i++) {
+        for (let j = 0; j < nbcolumns; j++) {
+            setPixel([i, j], color);
         }
     }
 }
 
 /**
  * Return the current color of the specified pixel
- * @param {Number} row 
+ * @param {Number} row
  * @param {Number} column
- * @returns {String} 
+ * @returns {String}
  */
-function getPixelColor(row, column) {
-    if(row < 0 || column < 0 || row >= nbRows || column >= nbColumns){
+function getPixelColor(pixel) {
+  var row = pixel['r'];
+  var column = pixel['c'];
+    if(row < 0 || column < 0 || row >= nbrows || column >= nbcolumns){
         return '#000000';
     }
     else{
@@ -122,9 +126,9 @@ function drawLetter(inputLetter, rowX, columnY, color, direction) {
         let letterPixels = charMap.get(letter);
         for (let i = 0; i < letterPixels.length; i = i + 2) {
             if (direction == 0) {
-                setPixel(rowX + letterPixels[i], columnY + letterPixels[i + 1], color);
+                setPixel([rowX + letterPixels[i], columnY + letterPixels[i + 1]], color);
             } else {
-                setPixel(rowX + letterPixels[i + 1], columnY - letterPixels[i], color);
+                setPixel([rowX + letterPixels[i + 1], columnY - letterPixels[i]], color);
             }
 
         }
@@ -204,7 +208,7 @@ function colourBlend(c1, c2, ratio) {
 /**
  * Generate a random integer between a and b
  * This function is natively in Blockly but needs to be redefined in that use
- * @param {Number} a 
+ * @param {Number} a
  * @param {Number} b
  * @returns {String} The generated number
  */
