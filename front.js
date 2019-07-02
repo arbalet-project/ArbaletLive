@@ -247,7 +247,7 @@ function createLedTable(nbRows, nbColumns) {
           if (is_disabled(i, j)) {
             newRow.insertCell(j).innerHTML = `<div class="dled" data-r="${i}" data-c="${j}"></div>`;
           } else {
-            newRow.insertCell(j).innerHTML = `<div class="led" data-r="${i}" data-c="${j}" title="[${i},${j}]"><span>[${i},${j}]</span></div>`;
+            newRow.insertCell(j).innerHTML = `<div class="led" data-r="${i}" data-c="${j}"><span>[${i},${j}]</span></div>`;
           }
         }
     }
