@@ -97,7 +97,7 @@
             margin-right: 15px;
         }
         a#stop{
-            background-image: url('../images/icon/stop.png');  
+            background-image: url('../images/icon/stop.png');
         }
         a#turn-led{
             background-image: url('../images/icon/reload.png');
@@ -121,6 +121,9 @@
         display: block;
         margin-top: 100%;
       }
+      #led-table td:hover{
+
+      }
       #led-table td .led {
         position: absolute;
         margin: 2px;
@@ -132,6 +135,13 @@
       }
 }
 
+
+//
+// .led:hover {
+//   content: '';
+//   display: block;
+//   margin-top: 100%;
+// }
 //Rotate Table Led
 .active-rotate{
     transform: rotate(-90deg)
@@ -158,7 +168,7 @@
         background-color: $color-background-2;
         color: $white-text;
         &:hover{
-            transform: scale(1);
+            transform: scale(0.5);
             background-color: $color-background-3;
           }
     }
