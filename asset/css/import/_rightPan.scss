@@ -17,17 +17,19 @@
         height: 75px;
         align-items: flex-end;
         margin-bottom: 35px;
-        & > a{
+        a#file{
+            background-image: url('../images/icon/file.png');
             background-size: contain;
             width: 18px;
             height: 18px;
             opacity: .7;
         }
-        a#file{
-            background-image: url('../images/icon/file.png')
-        }
         a#setting{
             background-image: url('../images/icon/setting.png');
+            background-size: contain;
+            width: 62px;
+            height: 62px;
+            opacity: .7;
             cursor: pointer;
         }
     }
@@ -135,13 +137,6 @@
       }
 }
 
-
-//
-// .led:hover {
-//   content: '';
-//   display: block;
-//   margin-top: 100%;
-// }
 //Rotate Table Led
 .active-rotate{
     transform: rotate(-90deg)
@@ -204,4 +199,6 @@
 #setting:hover ~ .setting-menu, .setting-menu:hover{
     visibility: visible;
     opacity: 1;
+    width: 100%;
+    height: 100%;
 }
