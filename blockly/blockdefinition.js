@@ -161,9 +161,8 @@ Blockly.defineBlocksWithJsonArray([{
     "message0": "%{BKY_SLEEP_TITLE}",
     "args0": [
       {
-        "type": "field_input",
-        "name": "time",
-        "text": "0"
+        "type": "input_value",
+        "name": "time"
       },
       {
         "type": "field_dropdown",

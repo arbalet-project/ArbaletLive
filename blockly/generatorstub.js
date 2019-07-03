@@ -60,7 +60,7 @@ Blockly.JavaScript['var_max_line'] = function(block) {
 };
 
 Blockly.JavaScript['sleep'] = function(block) {
-  var text_time = block.getFieldValue('time');
+  var text_time = Blockly.JavaScript.valueToCode(block, 'time', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_list = block.getFieldValue('list');
 
   var code = `await sleep(${text_time},${dropdown_list});`;
@@ -140,7 +140,7 @@ Blockly.JavaScript['math_random_int'] = function(block) {
 Blockly.JavaScript['is_in_list'] = function(block) {
   var value_item = Blockly.JavaScript.valueToCode(block, 'ITEM', Blockly.JavaScript.ORDER_ATOMIC);
   var value_list = Blockly.JavaScript.valueToCode(block, 'LIST', Blockly.JavaScript.ORDER_ATOMIC);
-  
+
   var code = `isInList(${value_item}, ${value_list})`;
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
