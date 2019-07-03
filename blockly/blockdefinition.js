@@ -291,5 +291,26 @@ Blockly.defineBlocksWithJsonArray([{
     "colour": 270,
     "tooltip": "C'est ici que s'écrit le programme principal. Les blocs en dehors de celui-ci ne seront pas exécutés",
     "helpUrl": ""
+  },
+  {
+    "type": "is_in_list",
+    "message0": "l'élément %1 est dans %2",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ITEM",
+        "align": "CENTRE"
+      },
+      {
+        "type": "input_value",
+        "name": "LIST",
+        "align": "CENTRE"
+      }
+    ],
+    "inputsInline": true,
+    "output": "Boolean",
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
   }
 ]);

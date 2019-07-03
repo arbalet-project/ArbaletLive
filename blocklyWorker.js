@@ -66,23 +66,50 @@ function setPixel(pixel, color) {
  * FIX ME (commentary TO DO)
  */
 function nextPixel(pixel, direction) {
+  var npixel = {'r': pixel['r'], 'c':pixel['c']};
   switch (direction) {
     case 'UP':
-      pixel['r'] = pixel['r'] -1;
+      npixel['r'] = pixel['r'] -1;
       break;
     case 'DOWN':
-      pixel['r'] = pixel['r'] +1;
+      npixel['r'] = pixel['r'] +1;
       break;
     case 'RIGHT':
-      pixel['c'] = pixel['c'] +1;
+      npixel['c'] = pixel['c'] +1;
       break;
     case 'LEFT':
-      pixel['c'] = pixel['c'] -1;
+      npixel['c'] = pixel['c'] -1;
       break;
     default:
   }
-  return pixel;
+  if (npixel['r'] < 0){
+    npixel['r'] = nbrows -1;
+  } else if (npixel['r'] >= nbrows){
+    npixel['r'] = 0;
+  }
+  if (npixel['c'] < 0){
+    npixel['c'] = nbcolumns -1;
+  } else if (npixel['c'] >= nbcolumns){
+    npixel['c'] = 0;
+  }
+  return npixel;
 }
+
+/**
+ * FIX ME (commentary TO DO)
+ */
+function isInList(item, list){
+  var search = JSON.stringify(item);
+  console.log(list);
+  for (var candidat of list){
+    console.log(candidat);
+    if (JSON.stringify(candidat) == search){
+      return true;
+    }
+  }
+  return false;
+}
+
 
 /**
  * Set the specified pixel off (set the pixel color to black)

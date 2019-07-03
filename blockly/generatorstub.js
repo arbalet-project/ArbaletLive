@@ -49,13 +49,13 @@ Blockly.JavaScript['turn_off_the_pixel'] = function(block) {
 
 Blockly.JavaScript['var_max_column'] = function(block) {
 
-  var code = 'nbColumns - 1';
+  var code = `${nbColumns - 1}`;
 
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript['var_max_line'] = function(block) {
-  var code = 'nbRows - 1';
+  var code = `${nbRows - 1}`;
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
@@ -135,4 +135,12 @@ Blockly.JavaScript['math_random_int'] = function(block) {
       Blockly.JavaScript.ORDER_COMMA) || '0';
   var code = `mathRandomInt(${argument0},${argument1})`;
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['is_in_list'] = function(block) {
+  var value_item = Blockly.JavaScript.valueToCode(block, 'ITEM', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_list = Blockly.JavaScript.valueToCode(block, 'LIST', Blockly.JavaScript.ORDER_ATOMIC);
+  
+  var code = `isInList(${value_item}, ${value_list})`;
+  return [code, Blockly.JavaScript.ORDER_NONE];
 };
