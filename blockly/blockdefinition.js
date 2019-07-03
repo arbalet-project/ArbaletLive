@@ -24,6 +24,43 @@ Blockly.defineBlocksWithJsonArray([{
     "helpUrl": ""
   },
   {
+    "type": "next_pixel",
+    "message0": "%{BKY_NEXT_PIXEL_TITLE}",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "position",
+        "options": [
+          [
+            "en haut",
+            "'UP'"
+          ],
+          [
+            "en bas",
+            "'DOWN'"
+          ],
+          [
+            "à droite",
+            "'RIGHT'"
+          ],
+          [
+            "à gauche",
+            "'LEFT'"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "pixel"
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 0,
+    "tooltip": "%{BKY_NEXT_PIXEL_TOOLTIP}",
+    "helpUrl": ""
+  },
+  {
     "type": "pixel_item",
     "message0": "%{BKY_PIXEL_TITLE}",
     "args0": [

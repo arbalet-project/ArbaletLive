@@ -13,6 +13,10 @@ Blockly.Msg["COLOR_PIXEL_TOOLTIP"] = "Add a row and a column, then the color";
 Blockly.Msg["PIXEL_TITLE"] = "Pixel %1 %2";
 Blockly.Msg["PIXEL_TOOLTIP"] = "Define a pixel by its row and column numbers";
 
+// Next pixel
+Blockly.Msg["NEXT_PIXEL_TITLE"] = "Pixel %1 of %2";
+Blockly.Msg["NEXT_PIXEL_TOOLTIP"] = "Returns the pixel next to the one given (up, down, right or left)";
+
 //Color all pixels
 Blockly.Msg["COLOR_ALL_PIXELS_TITLE"] = "Set all pixels in %1";
 Blockly.Msg["COLOR_ALL_PIXELS_TOOLTIP"] = "Click on the color picker to choose a color";

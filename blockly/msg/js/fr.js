@@ -15,6 +15,10 @@ Blockly.Msg["COLOR_PIXEL_TOOLTIP"] = "Ajouter une ligne et une colonne, puis une
 Blockly.Msg["PIXEL_TITLE"] = " Pixel %1 %2";
 Blockly.Msg["PIXEL_TOOLTIP"] = "Définir un pixel par sa ligne et sa colonne";
 
+// Next pixel
+Blockly.Msg["NEXT_PIXEL_TITLE"] = "Pixel %1 de %2";
+Blockly.Msg["NEXT_PIXEL_TOOLTIP"] = "Renvoie le pixel à coté de celui donné (en haut, en bas, à gauche ou à droite)";
+
 //Color all pixels
 Blockly.Msg["COLOR_ALL_PIXELS_TITLE"] = "Colorer tous les pixels en %1";
 Blockly.Msg["COLOR_ALL_PIXELS_TOOLTIP"] = "Choisir une couleur en cliquant";

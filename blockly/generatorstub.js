@@ -17,6 +17,15 @@ Blockly.JavaScript['pixel_item'] = function(block) {
   return [code,  Blockly.JavaScript.ORDER_NONE];
 };
 
+Blockly.JavaScript['next_pixel'] = function(block) {
+  var dropdown_position = block.getFieldValue('position');
+  var value_pixel = Blockly.JavaScript.valueToCode(block, 'pixel', Blockly.JavaScript.ORDER_ATOMIC);
+
+  var code = `nextPixel(${value_pixel}, ${dropdown_position})`;
+  // console.log(eval(code));
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
 Blockly.JavaScript['color_all_pixels'] = function(block) {
   var value_color = Blockly.JavaScript.valueToCode(block, 'color', Blockly.JavaScript.ORDER_ATOMIC);
 

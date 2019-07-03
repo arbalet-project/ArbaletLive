@@ -63,6 +63,28 @@ function setPixel(pixel, color) {
 }
 
 /**
+ * FIX ME (commentary TO DO)
+ */
+function nextPixel(pixel, direction) {
+  switch (direction) {
+    case 'UP':
+      pixel['r'] = pixel['r'] -1;
+      break;
+    case 'DOWN':
+      pixel['r'] = pixel['r'] +1;
+      break;
+    case 'RIGHT':
+      pixel['c'] = pixel['c'] +1;
+      break;
+    case 'LEFT':
+      pixel['c'] = pixel['c'] -1;
+      break;
+    default:
+  }
+  return pixel;
+}
+
+/**
  * Set the specified pixel off (set the pixel color to black)
  * @param {Number} rowX The pixel's row in the grid
  * @param {Number} columnY The pixel's column in the grid
