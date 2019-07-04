@@ -1,7 +1,7 @@
 {
-    "rows": 4,
-    "cols": 19,
-    "disabled": [[3, 5], [3, 6], [3, 7]],
+    "rows": 15,
+    "cols": 10,
+    "disabled": [],
     "project": "Meki",
-    "simuation": false
+    "simuation": true
 }

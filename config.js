@@ -56,19 +56,17 @@ function setconfig(pro, nr, nc, dpixels, se){
 }
 
 /**
- * Save the current settings in config.json by overwriting it
- */
-function saveSettings(){
-  // FIX ME
-}
-
-/**
  * Build the setting formular by displaying the current value in the form fields
  */
 function settingForm() {
-  document.getElementById('input-project').innerHTML = `<input type="text" id="setting-project" value="${project}">`;
-  document.getElementById('input-rows').innerHTML = `<input type="number" id="setting-rows" value=${nbRows}>`;
-  document.getElementById('input-cols').innerHTML = `<input type="number" id="setting-cols" value=${nbColumns}>`;
+  if (!simuation_enabled){
+    var disabled = `disabled`;
+  } else {
+    var disabled = ``;
+  }
+  document.getElementById('input-project').innerHTML = `<input type="text" id="setting-project" value="${project}"` + disabled + ` />`;
+  document.getElementById('input-rows').innerHTML = `<input type="number" id="setting-rows" value=${nbRows} ` + disabled + ` />`;
+  document.getElementById('input-cols').innerHTML = `<input type="number" id="setting-cols" value=${nbColumns}` + disabled + ` />`;
   let msg = "[";
   let dummyVar = 0;
   for (let pix of disabled_pixels){
@@ -79,5 +77,5 @@ function settingForm() {
     dummyVar += 1;
   }
   msg += "]";
-  document.getElementById('input-disabled').innerHTML = `<input type="text" id="setting-disabled" value="${msg}">`;
+  document.getElementById('input-disabled').innerHTML = `<input type="text" id="setting-disabled" value="${msg}"` + disabled + ` />`;
 }
