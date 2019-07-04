@@ -263,12 +263,13 @@ body {
 .setting-menu {
   visibility: hidden;
   position: absolute;
+  z-index: 50000;
   width: 100%;
   top: 90px;
   left: 0;
   border-top: 1px solid #252C34;
   opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear; }
+  transition: visibility 0s, opacity 0.2s linear; }
   .setting-menu a {
     display: block;
     padding: 20px 45px;
@@ -516,7 +517,7 @@ body {
   opacity: .9;
   background-color: #9F9696;
   border-radius: 4px;
-  z-index: 50000;
+  z-index: 5000;
 }
 
 .led:hover
