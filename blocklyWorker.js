@@ -2,7 +2,7 @@
  * @fileoverview This file is the script loaded by the worker that runs the blockly generated code
  */
 
-//importScripts('charMap.js');
+importScripts('charMap.js');
 
 let nbrows;
 let nbcolumns;
@@ -56,10 +56,12 @@ function setPixel(pixel, color) {
         self.postMessage({
             rowX: rowX,
             columnY: columnY,
-            color: color
+            color: color,
+            log :""
         });
         gridState[rowX][columnY] = color;
     }
+    console.log(gridState);
 }
 
 /**
@@ -138,7 +140,8 @@ function switchOffAllPixels() {
 function setAllPixels(color) {
     for (let i = 0; i < nbrows; i++) {
         for (let j = 0; j < nbcolumns; j++) {
-            setPixel([i, j], color);
+          let pixel = {'r':i, 'c':j};
+            setPixel(pixel, color);
         }
     }
 }
@@ -174,12 +177,17 @@ function drawLetter(inputLetter, rowX, columnY, color, direction) {
     if (charMap.has(letter)) {
         let letterPixels = charMap.get(letter);
         for (let i = 0; i < letterPixels.length; i = i + 2) {
+          let pixel = {'r':0, 'c':0};
             if (direction == 0) {
-                setPixel([rowX + letterPixels[i], columnY + letterPixels[i + 1]], color);
+              pixel['r'] = rowX + letterPixels[i];
+              pixel['c'] = columnY + letterPixels[i + 1];
+                setPixel(pixel, color);
             } else {
-                setPixel([rowX + letterPixels[i + 1], columnY - letterPixels[i]], color);
+              pixel['r'] = rowX + letterPixels[i + 1];
+              pixel['c'] = columnY - letterPixels[i];
+                setPixel(pixel, color);
             }
-
+            console.log(pixel);
         }
 
     }
