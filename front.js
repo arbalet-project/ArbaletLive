@@ -68,24 +68,20 @@ $('#config').on('click', function (e) {
   settingForm();
   $('.overlay-popup3').fadeIn(200);
   $("#setting-module").fadeIn(200, function () {
-       $('#setting-submit').on('click', function () {
-         saveSettings(
-          $('#setting-project').val(),
-          $('#setting-rows').val(),
-          $('#setting-cols').val(),
-          $('#setting-disabled').val()
-        );
-        setconfig(
-          $('#setting-project').val(),
-          $('#setting-rows').val(),
-          $('#setting-cols').val(),
-          $('#setting-disabled').val(),
-          true
-        );
-        createLedTable(nbRows, nbColumns);
+    $('#setting-submit').on('click', function () {
+      if (simulation_enabled){
+        if (setconfig($('#setting-rows').val(), $('#setting-cols').val(), $('#setting-disabled').val())){
+          createLedTable(nbRows, nbColumns);
+          $('#setting-module').fadeOut(200);
+          $('.overlay-popup3').fadeOut(200);
+        } else {
+          alert("invalid arguments");
+        }
+      } else{
         $('#setting-module').fadeOut(200);
         $('.overlay-popup3').fadeOut(200);
-       })
+      }
+    })
   })
 })
 
@@ -143,6 +139,7 @@ $('.overlay-popup3').on('click', function () {
     $(this).fadeOut(200, function () {
         $('#example-module').fadeOut(200)
         $('#export-module').fadeOut(200)
+        $('#setting-module').fadeOut(200)
         $('#informations-module').fadeOut(200)
         $('#challenges-module').fadeOut(200)
     })
@@ -224,6 +221,11 @@ function initWorkspace() {
 
 }
 
+/**
+ * Tells if the i,j pixel is disabled
+ * @param {Number} row
+ * @param {Number} column
+ */
 function is_disabled(i,j){
   for (let pos of disabled_pixels) {
     if ((pos[0] == i) && (pos[1] == j)){
@@ -252,6 +254,7 @@ function createLedTable(nbRows, nbColumns) {
         }
     }
 }
+
 /**
  * Toogle the full-screen mode of the simulation
  */

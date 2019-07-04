@@ -76,8 +76,11 @@ function stop() {
 function save(name) {
     let domWorkspace = Blockly.Xml.workspaceToDom(workspace);
     let textWorkSpace = Blockly.Xml.domToText(domWorkspace);
+    console.log(disabled_pixels);
+    let textParam = `${nbRows}####${nbColumns}####`+ JSON.stringify(disabled_pixels) +`####`;
+    console.log(textParam);
     if (name != null) {
-        download(textWorkSpace, name + '.xml', "application/xml");
+        download(textParam + textWorkSpace, name + '.xml', "application/xml");
     }
 }
 
@@ -89,11 +92,22 @@ function importWorkspace() {
     let reader = new FileReader();
     reader.onload = function (event) {
         try {
-            let parsedFile = Blockly.Xml.textToDom(reader.result);
-            Blockly.Xml.clearWorkspaceAndLoadFromXml(parsedFile, workspace);
-            stop();
+          let partFile = reader.result.split('####');
+          let configFile = {"rows": parseInt(partFile[0]), "cols":parseInt(partFile[1]), "disabled":partFile[2]};
+          if (simulation_enabled){
+            setconfig(configFile["rows"], configFile["cols"], configFile["disabled"]);
+            createLedTable(nbRows, nbColumns);
+          } else {
+            if ((configFile['rows'] != nbRows) || (configFile['cols'] != nbColumns)) {
+              throw("Error : the dimensions do not match");
+            }
+          }
+          let parsedFile = Blockly.Xml.textToDom(partFile[3]);
+          Blockly.Xml.clearWorkspaceAndLoadFromXml(parsedFile, workspace);
+          stop();
         } catch (error) {
-            alert(selectedFile.name + " n'est pas un fichier Arbalet valide");
+          console.log(error);
+          alert(selectedFile.name + " n'est pas un fichier Arbalet valide");
         }
     };
     reader.readAsText(selectedFile);

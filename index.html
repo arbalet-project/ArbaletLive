@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Arbalet Live</title>
+    <title id="doc-title"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="asset/css/style.css">
     <link rel="shortcur icon" type="image/png" href="asset/images/icon.png">
@@ -18,7 +18,7 @@
             <div class="left-pan">
                 <div class="head-title">
                     <img src="asset/images/icon.png" alt="">
-                    <h1>Arbalet Live</h1>
+                    <h1 id="doc-h1"></h1>
                     <input type="file" name="" id="fileImport" style="display: none">
                 </div>
                 <div id="blocklyDiv" style="height: 100%; width: 100%;">
@@ -424,7 +424,7 @@
       <div class="overlay-popup">
           <div class="window-popup starting-popup">
               <img src="asset/images/icon.png" alt="">
-              <h1>Bienvenue sur Arbalet Live !</h1>
+              <h1 id="doc-startMod"></h1>
               <div class="input-window">
                   <input type="text" id="user-name-input" placeholder="Entrez votre nom">
                   <button type="submit" id="send-name"></button>
@@ -485,9 +485,6 @@
               <h1>Paramètres de l'application</h1>
           </div>
           <div class="content">
-            <p>Nom de l'application</p>
-            <div class="input-window" id="input-project">
-            </div>
             <p>Nombre de ligne</p>
             <div class="input-window" id="input-rows">
             </div>
@@ -497,7 +494,9 @@
             <p>Pixels manquants</p>
             <div class="input-window" id="input-disabled">
             </div>
-            <button type="submit" id="setting-submit"></button>
+            <div class="input-window">
+              <button type="submit" id="setting-submit"></button>
+            </div>
           </div>
       </div>
       <!-- End Setting module -->
@@ -525,7 +524,7 @@
               <h1>Informations</h1>
           </div>
           <div class="info-content">
-            <p>Arbalet Live est un projet open source développé par les étudiants de la <a href="https://www.iut.u-bordeaux.fr/info/">licence DAWIN</a> de l'IUT informatique de Bordeaux (33). Ce projet fait partie de l'ensemble du <a href="http://www.arbalet-project.org"> projet Arbalet</a></p><br>
+            <p id="doc-infoMod"></p><br>
             <p>L'accès aux sources et aux informations sont disponibles sur le dépot suivant: <a href="https://github.com/arbalet-project/ArbaletMeki">https://github.com/arbalet-project/ArbaletMeki</a></p><br>
             <p>Les étudiants ayant participé à la création de cette application sont :</p>
             <div class="info-autor">
@@ -577,8 +576,8 @@
     <script src="blockly/blockdefinition.js"></script>
     <script src="download.js"></script>
 <!-- FIX ME mesure -->
-<script src="/charMap.js"></script>
-<script src="/blocklyWorker.js"></script>
+<!-- <script src="/charMap.js"></script>
+<script src="/blocklyWorker.js"></script> -->
 <!-- END FIX ME mesure -->
     <script src="/socket.io/socket.io.js"></script>
     <script src="/jquery/jquery.js"></script>
