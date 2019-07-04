@@ -55,13 +55,13 @@
 
 // Popup Input Style
 
-.input-window{ 
+.input-window{
     position: relative;
     input[type=text]{
         background-color: $color-background-3;
         border: none;
         padding: 10px 30px 10px 20px;
-        text-align: center; 
+        text-align: center;
         caret-color: $white-text;
         color: $white-text;
         font-family: 'Raleway', sans-serif;
@@ -166,7 +166,24 @@
     .input-window{
         margin-top: 15px;
     }
-} 
+}
+
+//Setting Module Style
+
+.window-popup#setting-module{
+        display: none;
+        height: auto;
+    .content{
+        p{color: $grey-text;}
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .input-window{
+        margin-top: 15px;
+    }
+}
 
 // Full-Table Module Style
 .full-screen{
@@ -207,7 +224,7 @@
                 margin-bottom: 10px;
                 &>div{
                     display: flex;
-                    justify-content: space-between;  
+                    justify-content: space-between;
                     a{
                         width: 15px;
                         height: 15px;
@@ -220,7 +237,7 @@
                         }
                         &:last-child{
                             background-image: url('../images/icon/linkedin.png')
-                        }  
+                        }
                         }
                     }
                 }

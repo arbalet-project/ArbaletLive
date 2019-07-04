@@ -365,6 +365,16 @@ body {
     font-family: 'Raleway', sans-serif;
     font-weight: 600;
     border-radius: 11px; }
+    .input-window input[type=number] {
+      background-color: #252C34;
+      border: none;
+      padding: 10px 30px 10px 20px;
+      text-align: center;
+      caret-color: #D5D4D3;
+      color: #D5D4D3;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      border-radius: 11px; }
     .input-window input[type=text]:focus {
       outline: none; }
   .input-window button[type=submit] {
