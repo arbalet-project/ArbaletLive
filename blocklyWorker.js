@@ -45,8 +45,7 @@ onmessage = function (e) {
 
 /**
  * Set a specified pixel to the chosen color by sending a message to the main thread
- * @param {Number} rowX The pixel's row in the grid
- * @param {Number} columnY The pixel's column in the grid
+ * @param {Object} pixel The pixel is a pixel object {'r':number, 'c':number}
  * @param {String} color The color to set to the pixel
  */
 function setPixel(pixel, color) {
@@ -65,7 +64,9 @@ function setPixel(pixel, color) {
 }
 
 /**
- * FIX ME (commentary TO DO)
+ * Set a specified pixel to the chosen color by sending a message to the main thread
+ * @param {Object} pixel The pixel is a pixel object {'r':number, 'c':number}
+ * @param {String} direction The direction in which the next pixel is in the pixel perspective
  */
 function nextPixel(pixel, direction) {
   var npixel = {'r': pixel['r'], 'c':pixel['c']};
@@ -98,7 +99,9 @@ function nextPixel(pixel, direction) {
 }
 
 /**
- * FIX ME (commentary TO DO)
+ * Tell if the item is in the list, item can be an object
+ * @param {Object} item a object, can be primitive or not
+ * @param {List} list an object list
  */
 function isInList(item, list){
   var search = JSON.stringify(item);
