@@ -29,7 +29,7 @@ function run() {
             nbRows: nbRows,
             nbColumns: nbColumns
         });
-
+        // console.log(generateScripts());
         // Send the different scripts to the worker
         blocklyWorker.postMessage({
             message: 'scripts',
@@ -40,7 +40,10 @@ function run() {
             if (event.data.message == 'close') {
                 stop();
             } else {
+              // console.log(event.data);
+              if (event.data.log == ""){
                 updatePixel(event.data.rowX, event.data.columnY, event.data.color);
+              }
             }
 
         };
