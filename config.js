@@ -71,11 +71,29 @@ function setconfig(nr, nc, dpixels){
   }
   nbRows = nr;
   nbColumns = nc;
-  let dpjson = `{"dp":`+ dpixels +`}`;
+  let dpjson = `{"dp":`+ JSON.stringify(dpixels) +`}`;
   disabled_pixels = JSON.parse(dpjson)['dp'];
   return true;
 }
 
+function pixmlify(pixels){
+  let xmlstring = "";
+  for (var pix of pixels){
+    xmlstring += `<pixel row="${pix[0]}" col="${pix[1]}"></pixel>`;
+  }
+  return xmlstring;
+}
+
+function pixmlparse(pixml){
+  let pixels = [];
+  for (var i = 0; i < pixml.length; i++){
+    var pix = pixml[i];
+    var atts = pix.attributes;
+    console.log(pix, atts);
+    pixels[i] = [parseInt(atts[0].value), parseInt(atts[1].value)];
+  }
+  return pixels;
+}
 
 /**
  * Set the app name in all its occurences

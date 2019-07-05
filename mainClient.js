@@ -77,11 +77,64 @@ function save(name) {
     let domWorkspace = Blockly.Xml.workspaceToDom(workspace);
     let textWorkSpace = Blockly.Xml.domToText(domWorkspace);
     console.log(disabled_pixels);
-    let textParam = `${nbRows}####${nbColumns}####`+ JSON.stringify(disabled_pixels) +`####`;
+    // let textParam = `${nbRows}####${nbColumns}####`+ JSON.stringify(disabled_pixels) +`####`; //OLD
+    let textParam = `<arbalet><param><nbRows>${nbRows}</nbRows><nbColumns>${nbColumns}</nbColumns><disabled>`
+                    + pixmlify(disabled_pixels)
+                    + `</disabled></param><blockly>`;
     console.log(textParam);
     if (name != null) {
-        download(textParam + textWorkSpace, name + '.xml', "application/xml");
+        download(textParam + textWorkSpace + `</blockly></arbalet>`, name + '.xml', "application/xml");
     }
+}
+
+
+function BuildXMLFromString(text) {
+  var message = "";
+  if (window.DOMParser) { // all browsers, except IE before version 9
+    var parser = new DOMParser();
+    try {
+      xmlDoc = parser.parseFromString(text, "text/xml");
+    } catch (e) {
+      // if text is not well-formed,
+      // it raises an exception in IE from version 9
+      console.log("XML parsing error.");
+      return false;
+    };
+  }
+  else {  // Internet Explorer before version 9
+    xmlDoc = CreateMSXMLDocumentObject();
+    if (!xmlDoc) {
+      console.log("Cannot create XMLDocument object");
+      return false;
+    }
+
+    xmlDoc.loadXML(text);
+  }
+
+  var errorMsg = null;
+  if (xmlDoc.parseError && xmlDoc.parseError.errorCode != 0) {
+    errorMsg = "XML Parsing Error: " + xmlDoc.parseError.reason
+    + " at line " + xmlDoc.parseError.line
+    + " at position " + xmlDoc.parseError.linepos;
+  }
+  else {
+    if (xmlDoc.documentElement) {
+      if (xmlDoc.documentElement.nodeName == "parsererror") {
+        errorMsg = xmlDoc.documentElement.childNodes[0].nodeValue;
+      }
+    }
+    else {
+      errorMsg = "XML Parsing Error!";
+    }
+  }
+
+  if (errorMsg) {
+    console.log(errorMsg);
+    return false;
+  }
+
+  console.log("Parsing was successful!");
+  return xmlDoc;
 }
 
 /**
@@ -92,18 +145,28 @@ function importWorkspace() {
     let reader = new FileReader();
     reader.onload = function (event) {
         try {
-          let partFile = reader.result.split('####');
-          let configFile = {"rows": parseInt(partFile[0]), "cols":parseInt(partFile[1]), "disabled":partFile[2]};
-          if (simulation_enabled){
-            setconfig(configFile["rows"], configFile["cols"], configFile["disabled"]);
-            createLedTable(nbRows, nbColumns);
-          } else {
-            if ((configFile['rows'] != nbRows) || (configFile['cols'] != nbColumns)) {
-              throw("Error : the dimensions do not match");
-            }
+          let xmltext = BuildXMLFromString(reader.result);
+          if (!xmltext){
+            throw("error: not an xml");
           }
-          let parsedFile = Blockly.Xml.textToDom(partFile[3]);
-          Blockly.Xml.clearWorkspaceAndLoadFromXml(parsedFile, workspace);
+          let racine = xmltext.documentElement;
+          if (racine.nodeName == "arbalet"){
+            var blocklytext = racine.getElementsByTagName("blockly")[0].innerHTML;
+            var docRows = racine.getElementsByTagName("nbRows")[0].innerHTML;
+            var docColumns = racine.getElementsByTagName("nbColumns")[0].innerHTML;
+            if (simulation_enabled){
+              var pixels = pixmlparse(racine.getElementsByTagName("pixel"));
+              console.log(pixels);
+              setconfig(docRows, docColumns, pixels);
+              createLedTable(docRows, docColumns);
+            } else if (docRows != nbRows || docColumns != nbColumns){
+              throw("error : the dimensions do not match");
+            }
+          }else {
+            var blocklytext = racine.outerHTML;
+          }
+          let blocklyxml = Blockly.Xml.textToDom(blocklytext);
+          Blockly.Xml.clearWorkspaceAndLoadFromXml(blocklyxml, workspace);
           stop();
         } catch (error) {
           console.log(error);
