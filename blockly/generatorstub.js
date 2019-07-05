@@ -62,8 +62,8 @@ Blockly.JavaScript['var_max_line'] = function(block) {
 Blockly.JavaScript['sleep'] = function(block) {
   var text_time = Blockly.JavaScript.valueToCode(block, 'time', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_list = block.getFieldValue('list');
-
   var code = `await sleep(${text_time},${dropdown_list});`;
+  // var code = `sleep(${text_time},${dropdown_list});`;
   return code;
 };
 
@@ -143,4 +143,18 @@ Blockly.JavaScript['is_in_list'] = function(block) {
 
   var code = `isInList(${value_item}, ${value_list})`;
   return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+
+Blockly.JavaScript['procedures_callnoreturn'] = function(block) {
+  // Call a procedure with no return value.
+  var funcName = Blockly.JavaScript.variableDB_.getName(
+      block.getFieldValue('NAME'), Blockly.Procedures.NAME_TYPE);
+  var args = [];
+  for (var i = 0; i < block.arguments_.length; i++) {
+    args[i] = Blockly.JavaScript.valueToCode(block, 'ARG' + i,
+        Blockly.JavaScript.ORDER_COMMA) || 'null';
+  }
+  var code = 'await ' +funcName + '(' + args.join(', ') + ');\n';
+  return code;
 };

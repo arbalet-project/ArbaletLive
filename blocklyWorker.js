@@ -59,8 +59,14 @@ function setPixel(pixel, color) {
             log :""
         });
         gridState[rowX][columnY] = color;
+    } else {
+      self.postMessage({
+          rowX: rowX,
+          columnY: columnY,
+          color: color,
+          log :"nok"
+      });
     }
-    console.log(gridState);
 }
 
 /**
@@ -105,9 +111,7 @@ function nextPixel(pixel, direction) {
  */
 function isInList(item, list){
   var search = JSON.stringify(item);
-  console.log(list);
   for (var candidat of list){
-    console.log(candidat);
     if (JSON.stringify(candidat) == search){
       return true;
     }
@@ -190,7 +194,6 @@ function drawLetter(inputLetter, rowX, columnY, color, direction) {
               pixel['c'] = columnY - letterPixels[i];
                 setPixel(pixel, color);
             }
-            console.log(pixel);
         }
 
     }

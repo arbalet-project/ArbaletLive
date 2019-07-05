@@ -89,7 +89,6 @@ function pixmlparse(pixml){
   for (var i = 0; i < pixml.length; i++){
     var pix = pixml[i];
     var atts = pix.attributes;
-    console.log(pix, atts);
     pixels[i] = [parseInt(atts[0].value), parseInt(atts[1].value)];
   }
   return pixels;

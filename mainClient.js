@@ -76,12 +76,9 @@ function stop() {
 function save(name) {
     let domWorkspace = Blockly.Xml.workspaceToDom(workspace);
     let textWorkSpace = Blockly.Xml.domToText(domWorkspace);
-    console.log(disabled_pixels);
-    // let textParam = `${nbRows}####${nbColumns}####`+ JSON.stringify(disabled_pixels) +`####`; //OLD
     let textParam = `<arbalet><param><nbRows>${nbRows}</nbRows><nbColumns>${nbColumns}</nbColumns><disabled>`
                     + pixmlify(disabled_pixels)
                     + `</disabled></param><blockly>`;
-    console.log(textParam);
     if (name != null) {
         download(textParam + textWorkSpace + `</blockly></arbalet>`, name + '.xml', "application/xml");
     }
@@ -156,7 +153,6 @@ function importWorkspace() {
             var docColumns = racine.getElementsByTagName("nbColumns")[0].innerHTML;
             if (simulation_enabled){
               var pixels = pixmlparse(racine.getElementsByTagName("pixel"));
-              console.log(pixels);
               setconfig(docRows, docColumns, pixels);
               createLedTable(docRows, docColumns);
             } else if (docRows != nbRows || docColumns != nbColumns){
