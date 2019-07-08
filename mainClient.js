@@ -22,34 +22,34 @@ let sharedArray;
 function run() {
     if (!isRunning) {
         updateTimer = setInterval(updateArbalet, 100);
+
         blocklyWorker = new Worker('/blocklyWorker.js');
 
         blocklyWorker.postMessage({
-            message: 'gridLength',
-            nbRows: nbRows,
-            nbColumns: nbColumns
+          message: 'gridLength',
+          nbRows: nbRows,
+          nbColumns: nbColumns
         });
-        // console.log(generateScripts());
-        // Send the different scripts to the worker
+
         blocklyWorker.postMessage({
-            message: 'scripts',
-            scripts: generateScripts()
+          message: 'scripts',
+          scripts: generateScripts()
         });
 
         blocklyWorker.onmessage = function (event) {
-            if (event.data.message == 'close') {
-                stop();
-            } else {
-              // console.log(event.data);
-              if (event.data.log == ""){
-                updatePixel(event.data.rowX, event.data.columnY, event.data.color);
-              }
+          if (event.data.message == 'close') {
+            stop();
+          } else {
+            if (event.data.log != ""){
+              console.log(event.data.log);
             }
+            updatePixel(event.data.rowX, event.data.columnY, event.data.color);
+          }
 
         };
         // All data sent to the worker, it can run the program
         blocklyWorker.postMessage({
-            message: "run"
+          message: "run"
         });
         isRunning = true;
         switchPlayStopColors();
@@ -232,14 +232,31 @@ function generateScripts() {
         scripts[key] = functionsDefinition + code;
         noEventProgram = false;
     });
-
-    scripts["main"] = functionsDefinition + Blockly.JavaScript.blockToCode(
-        Blockly.mainWorkspace.getBlocksByType("main_script")[0]);
-    if(noEventProgram){
-        scripts["main"] += 'self.postMessage({message: "close"});close();' ;
+    let ind = 0;
+    if (Blockly.mainWorkspace.getBlocksByType("main_script").length > 1){
+      let mains = "";
+      for (var submain of Blockly.mainWorkspace.getBlocksByType("main_script")){
+        mains += `async function main${ind}(){\n await sleep(10, 'ms');` +
+                        functionsDefinition + Blockly.JavaScript.blockToCode(submain) +
+                        `}\n `;
+        ind += 1;
+      }
+      let mainm = "await Promise.all([";
+      for (let j = 0; j < ind-1 ; j++){
+        mainm += `main${j}(),`;
+      }
+      mainm += `main${ind-1}()`;
+      scripts["main"] = mains + mainm + "]);";
+    } else {
+      scripts["main"] = "async function main(){" +
+                      functionsDefinition +
+                      Blockly.JavaScript.blockToCode(Blockly.mainWorkspace.getBlocksByType("main_script")[0]) +
+                      "} await main();";
+    }
+    if(noEventProgram ){
+      scripts["main"] += 'self.postMessage({message: "close"});close();' ;
     }
     return scripts;
-
 }
 
 /**
@@ -259,12 +276,16 @@ function generateFunctions() {
     });
 
     // Variables declarations are deleted, so they will be global and shared between the main script and event scripts
-    delete Blockly.JavaScript.definitions_.variables;
+    if (Blockly.mainWorkspace.getBlocksByType("event_key").length > 0){
+      delete Blockly.JavaScript.definitions_.variables;
+    }
 
     let arrayFunctions = Object.values(Blockly.JavaScript.definitions_);
     arrayFunctions = arrayFunctions.map((x) => {
-        if(x != ''){
+        if(x != '' && x.substr(0,3) != 'var'){
             return 'async ' + x;
+        } else if (x.substr(0,3) == 'var'){
+          return x;
         }
     });
 
