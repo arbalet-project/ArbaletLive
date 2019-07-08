@@ -1,7 +1,7 @@
 /**
  * @fileoverview This file contains the application's core functions (client-side on browser)
  */
-
+const softVersion = 1;
 const socket = io();
 let granted = false;
 let isRunning = false;
@@ -78,7 +78,7 @@ function save(name) {
     let textWorkSpace = Blockly.Xml.domToText(domWorkspace);
     let textParam = `<arbalet><param><nbRows>${nbRows}</nbRows><nbColumns>${nbColumns}</nbColumns><disabled>`
                     + pixmlify(disabled_pixels)
-                    + `</disabled></param><blockly>`;
+                    + `</disabled></param><version>${softVersion}</version><blockly>`;
     if (name != null) {
         download(textParam + textWorkSpace + `</blockly></arbalet>`, name + '.xml', "application/xml");
     }
