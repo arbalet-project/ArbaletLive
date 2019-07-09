@@ -478,6 +478,11 @@ body {
 .full-screen .led-header a#full-screen {
   background-image: url("../images/icon/close.png"); }
 
+  #version {
+    color: #FFFFFF;
+    line-height: 16px;
+    text-align: left; }
+
 #informations-module {
   display: none; }
   #informations-module .info-content {

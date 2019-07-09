@@ -100,6 +100,7 @@ function pixmlparse(pixml){
  * Set the app name in all its occurences
  */
 function configName(){
+  document.getElementById('doc-infoTitle').innerHTML = `Arbalet ${project} Live`;
   document.getElementById('doc-title').innerHTML = `Arbalet ${project} Live`;
   document.getElementById('doc-h1').innerHTML = `Arbalet ${project} Live`;
   document.getElementById('doc-startMod').innerHTML = `Bienvenue sur Arbalet ${project} Live !`;

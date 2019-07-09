@@ -4,7 +4,7 @@
  */
 let name = "";
 document.getElementById('user-name-input').value = generateNickname();
-
+document.getElementById('version').innerHTML += softVersion;
 let workspace;
 
 createLedTable(nbRows, nbColumns, disabled_pixels);
