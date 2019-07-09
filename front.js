@@ -2,7 +2,7 @@
  * @fileoverview This file contains all the graphical functions and event manager that work with the interface (client-side on browser)
  * @see mainClient.js
  */
-
+let name = "";
 document.getElementById('user-name-input').value = generateNickname();
 
 let workspace;
@@ -75,6 +75,7 @@ $('#import').on('click', function (e) {
 });
 
 $('#export').on('click', function () {
+    document.getElementById('export-input').value = name.replace(' ', '') + ".xml";
     $('.overlay-popup3').fadeIn(200);
     $("#export-module").fadeIn(200, function () {
         $('#export-file').on('click', function () {
@@ -141,7 +142,7 @@ $('.setting-menu').hover(function () {
 });
 
 $('#send-name').on('click', function () {
-    var name = $('#user-name-input').val()
+    name = $('#user-name-input').val()
     if(name != ""){
         hideLoginScreen();
         if (! simulation_enabled){
