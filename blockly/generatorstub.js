@@ -145,6 +145,15 @@ Blockly.JavaScript['is_in_list'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
+Blockly.JavaScript['scrolling_text'] = function(block) {
+  var text_name = block.getFieldValue('text');
+  var value_name = Blockly.JavaScript.valueToCode(block, 'col', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_color = Blockly.JavaScript.valueToCode(block, 'color', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_font = Blockly.JavaScript.valueToCode(block, 'bgcolor', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = `await scrollingText("${text_name}", ${value_name}, ${value_color}, ${value_font});\n`;
+  return code;
+};
 
 Blockly.JavaScript['procedures_callnoreturn'] = function(block) {
   // Call a procedure with no return value.

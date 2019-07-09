@@ -45,6 +45,10 @@ Blockly.Msg["SLEEP_TOOLTIP"] = "Choose time and its unity";
 Blockly.Msg["PIXEL_COLOR_TITLE"] = "Get pixel %1 color";
 Blockly.Msg["PIXEL_COLOR_TOOLTIP"] = "Choose a row and a column";
 
+//Scrolling text
+Blockly.Msg["SCROLL_TITLE"] = "Scroll %1 above %2 column in color %3 on %4";
+Blockly.Msg["SCROLL_TOOLTIP"] = "scroll the text above the indicated column in color on background";
+
 Blockly.Msg["ADD_COMMENT"] = "Add Comment";
 Blockly.Msg["CANNOT_DELETE_VARIABLE_PROCEDURE"] = "Can't delete the variable '%1' because it's part of the definition of the function '%2'";
 Blockly.Msg["CHANGE_VALUE_TITLE"] = "Change value:";

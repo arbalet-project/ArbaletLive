@@ -284,3 +284,28 @@ function mathRandomInt(a, b) {
     }
     return Math.floor(Math.random() * (b - a + 1) + a);
   }
+
+async function scrollingText(texte, numColonne, col, bg_col){
+  let i = 0;
+  var repeat_end = texte.length * 9;
+  setAllPixels(bg_col);
+  for (var count = 0; count < repeat_end; count++) {
+    var i_end = texte.length;
+    var i_inc = 1;
+    if (0 > i_end) {
+      i_inc = -i_inc;
+    }
+    for (i = 0; i_inc >= 0 ? i <= i_end : i >= i_end; i += i_inc) {
+      drawLetter((texte.charAt((i - 1))),(numColonne + i * 7),8,col,1);
+    }
+    await sleep(200,'ms');var i_end2 = texte.length;
+    var i_inc2 = 1;
+    if (0 > i_end2) {
+      i_inc2 = -i_inc2;
+    }
+    for (i = 0; i_inc2 >= 0 ? i <= i_end2 : i >= i_end2; i += i_inc2) {
+      drawLetter((texte.charAt((i - 1))),(numColonne + i * 7),8,bg_col,1);
+    }
+    numColonne = numColonne - 1;
+  }
+}

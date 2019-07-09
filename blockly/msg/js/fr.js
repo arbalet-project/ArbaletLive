@@ -47,6 +47,11 @@ Blockly.Msg["SLEEP_TOOLTIP"] = "Choisir un temps et son unité de mesure";
 Blockly.Msg["PIXEL_COLOR_TITLE"] = "Couleur de %1";
 Blockly.Msg["PIXEL_COLOR_TOOLTIP"] = "Ajouter une ligne et une colonne";
 
+//Scrolling text
+Blockly.Msg["SCROLL_TITLE"] = "Faire défiler %1 depuis la colonne %2 en %3 sur fond %4";
+Blockly.Msg["SCROLL_TOOLTIP"] = "Fais défiler le texte en prennant la colonne comme point d'appui";
+
+
 Blockly.Msg["ADD_COMMENT"] = "Ajouter un commentaire";
 Blockly.Msg["CANNOT_DELETE_VARIABLE_PROCEDURE"] = "Impossible de supprimer la variable '%1' parce qu’elle fait partie de la définition de la fonction '%2'";
 Blockly.Msg["CHANGE_VALUE_TITLE"] = "Modifier la valeur :";

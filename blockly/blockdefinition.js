@@ -187,6 +187,35 @@ Blockly.defineBlocksWithJsonArray([{
     "helpUrl": ""
   },
   {
+    "type": "scrolling_text",
+    "message0": "%{BKY_SCROLL_TITLE}",
+    "args0": [
+      {
+        "type": "field_input",
+        "name": "text",
+        "text": "ENSEIRB"
+      },
+      {
+        "type": "input_value",
+        "name": "col"
+      },
+      {
+        "type": "input_value",
+        "name": "color"
+      },
+      {
+        "type": "input_value",
+        "name": "bgcolor"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 165,
+    "tooltip": "%{BKY_SCROLL_TOOLTIP}",
+    "helpUrl": ""
+  },
+  {
     "type": "draw_letter",
     "message0": "Dessiner la lettre %1 à %2 %3 en %4 %5",
     "args0": [
