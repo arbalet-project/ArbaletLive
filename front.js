@@ -3,6 +3,8 @@
  * @see mainClient.js
  */
 
+document.getElementById('user-name-input').value = generateNickname();
+
 let workspace;
 
 createLedTable(nbRows, nbColumns, disabled_pixels);
