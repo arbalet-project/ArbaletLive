@@ -71,6 +71,11 @@ $('#config').on('click', function (e) {
 
 $('#import').on('click', function (e) {
     e.preventDefault();
+    if (Blockly.mainWorkspace.getAllBlocks().length > 1){
+      if (!confirm('Êtes vous sûr(e) de vouloir continuer ?')){
+        return;
+      }
+    }
     $('#fileImport').click();
 });
 
@@ -103,6 +108,11 @@ $('#example').on('click', function () {
 });
 
 $('#file').on('click',function(){
+  if (Blockly.mainWorkspace.getAllBlocks().length > 1){
+    if (!confirm('Êtes vous sûr(e) de vouloir continuer ?')){
+      return;
+    }
+  }
     workspace.clear();
     let mainBlock = workspace.newBlock('main_script');
     mainBlock.initSvg();
