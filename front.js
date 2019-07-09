@@ -148,7 +148,9 @@ $('#full-screen').on('click', function (e) {
 $('.setting-menu').hover(function () {
     $('.info-user').fadeOut(200);
 }, function () {
+  if (!simulation_enabled){
     $('.info-user').fadeIn(200);
+  }
 });
 
 $('#send-name').on('click', function () {
