@@ -7,25 +7,7 @@ let workspace;
 
 createLedTable(nbRows, nbColumns, disabled_pixels);
 initWorkspace();
-
-// Management of the received messages on websockets
-
-socket.on('logged',(user) => {
-    $('#user-name').text(user.name);
-    $('#user-ip').text(user.ip);
-    //hideLoginScreen();
-    $('.overlay-popup').hide();
-});
-
-socket.on('granted', function () {
-    granted = true;
-    $('.connect-style').replaceWith('<p class="connect-style live">live</p>');
-});
-
-socket.on('ungranted', function () {
-    granted = false;
-    $('.live').replaceWith('<p class="connect-style">Connecté au poste</p>');
-});
+configSocket();
 
 // Event keys for Blockly, stores the corresponding event in a sharedArray to be read by the worker
     $(document).on('keydown', function (e) {
@@ -160,7 +142,9 @@ $('#send-name').on('click', function () {
     var name = $('#user-name-input').val()
     if(name != ""){
         hideLoginScreen();
+        if (! simulation_enabled){
         socket.emit('login', name);
+      }
     }
 });
 

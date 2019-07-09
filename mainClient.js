@@ -1,8 +1,7 @@
 /**
  * @fileoverview This file contains the application's core functions (client-side on browser)
  */
-const softVersion = 1;
-const socket = io();
+const socket = (simulation_enabled ? null : io());
 let granted = false;
 let isRunning = false;
 let updateTimer;
@@ -191,7 +190,7 @@ function loadExemple(fileName){
  * Update the material Arbalet pixel grid if granted
  */
 function updateArbalet() {
-    if (pixelsToUpdate.length != 0 && granted) {
+    if (pixelsToUpdate.length != 0 && granted && !simulation_enabled) {
         socket.emit('updateGrid', pixelsToUpdate);
         pixelsToUpdate = [];
     }
