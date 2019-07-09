@@ -108,6 +108,10 @@ function configName(){
 function configSocket(){
   if(!simulation_enabled){
     import("/socketHandler.js");
+  } else {
+    $('.info-user').css({
+        "display": 'none'
+    });
   }
 }
 
