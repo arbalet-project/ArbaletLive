@@ -49,7 +49,7 @@ function getconfig() {
  */
 function valid(pixelsarray, nr, nc){
   try {
-    let array = eval(pixelsarray);
+    let array = JSON.parse(pixelsarray);
     for (var tmp of array){
       if (tmp[0] < 0 || tmp[0] >= nr || tmp[1] < 0 || tmp[1] >= nc){
         return false;
@@ -73,8 +73,7 @@ function setconfig(nr, nc, dpixels){
   }
   nbRows = nr;
   nbColumns = nc;
-  let dpjson = `{"dp":`+ JSON.stringify(dpixels) +`}`;
-  disabled_pixels = JSON.parse(dpjson)['dp'];
+  disabled_pixels = JSON.parse(dpixels);
   return true;
 }
 
@@ -127,17 +126,8 @@ function settingForm() {
   } else {
     var disabled = ``;
   }
-  document.getElementById('input-rows').innerHTML = `<input type="number" id="setting-rows" value=${nbRows} ` + disabled + ` />`;
-  document.getElementById('input-cols').innerHTML = `<input type="number" id="setting-cols" value=${nbColumns} ` + disabled + ` />`;
-  let msg = "[";
-  let dummyVar = 0;
-  for (let pix of disabled_pixels){
-    if (dummyVar != 0) {
-      msg += ", ";
-    }
-    msg += "[" + pix[0] + "," + pix[1] + "]";
-    dummyVar += 1;
-  }
-  msg += "]";
+  document.getElementById('input-rows').innerHTML = `<input type="number" id="setting-rows" min="1" max="20" value=${nbRows} ` + disabled + ` />`;
+  document.getElementById('input-cols').innerHTML = `<input type="number" id="setting-cols" min="1" max="20" value=${nbColumns} ` + disabled + ` />`;
+  let msg = JSON.stringify(disabled_pixels);
   document.getElementById('input-disabled').innerHTML = `<input type="text" id="setting-disabled" value="${msg}" ` + disabled + ` />`;
 }
