@@ -103,7 +103,7 @@ function configName(){
   document.getElementById('doc-title').innerHTML = `Arbalet ${project} Live`;
   document.getElementById('doc-h1').innerHTML = `Arbalet ${project} Live`;
   document.getElementById('doc-startMod').innerHTML = `Bienvenue sur Arbalet ${project} Live !`;
-  document.getElementById('doc-infoMod').innerHTML = `Arbalet ${project} Live est un projet open source développé par les étudiants de la <a href="https://www.iut.u-bordeaux.fr/info/">licence DAWIN</a> de l'IUT informatique de Bordeaux (33). Ce projet fait partie de l'ensemble du <a href="http://www.arbalet-project.org"> projet Arbalet</a>`
+  document.getElementById('doc-infoMod').innerHTML = `Arbalet ${project} Live est un projet opensource développé par les membres d'Arbalet Living Lab pour le <a href="http://www.arbalet-project.org">projet Arbalet</a>`
 }
 
 function configSocket(){
