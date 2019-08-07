@@ -9,7 +9,49 @@ let workspace;
 
 createLedTable(nbRows, nbColumns, disabled_pixels);
 initWorkspace();
-configSocket();
+
+/**
+ * Display informations relative to backend only if a backend is connected
+ */
+if(!simulation_enabled){
+  socket.on('logged',(user) => {
+      $('#user-name').text(user.name);
+      $('#user-ip').text(user.ip);
+      //hideLoginScreen();
+      lastbeacon = (new Date()).getTime();
+      $('.overlay-popup').hide();
+  });
+
+  socket.on('granted', function () {
+      granted = true;
+      $('.connect-style').replaceWith('<p class="connect-style live">live</p>');
+  });
+
+  socket.on('ungranted', function () {
+      granted = false;
+      $('.live').replaceWith('<p class="connect-style">Connecté</p>');
+  });
+
+  socket.on('isAlive', function () {
+    lastbeacon = (new Date()).getTime();
+    socket.emit('isAlive');
+    console.log("isAlive replied");
+  });
+
+  function beaconChecker() {
+    console.log("beanconChecker");
+    if ( (lastbeacon != null) && (new Date()).getTime() - lastbeacon > 3000){
+      granted = false;
+      $('.connect-style').replaceWith('<p class="connect-style">Déconnecté</p>');
+    }
+  }
+
+  setInterval(beaconChecker, 1000);
+} else {
+  $('.info-user').css({
+      "display": 'none'
+  });
+}
 
 // Event keys for Blockly, stores the corresponding event in a sharedArray to be read by the worker
     $(document).on('keydown', function (e) {

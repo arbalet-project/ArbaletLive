@@ -107,17 +107,6 @@ function configName(){
   document.getElementById('doc-infoMod').innerHTML = `Arbalet ${project} Live est un projet open source développé par les étudiants de la <a href="https://www.iut.u-bordeaux.fr/info/">licence DAWIN</a> de l'IUT informatique de Bordeaux (33). Ce projet fait partie de l'ensemble du <a href="http://www.arbalet-project.org"> projet Arbalet</a>`
 }
 
-function configSocket(){
-  if(!simulation_enabled){
-    import("/socketHandler.js");
-  } else {
-    $('.info-user').css({
-        "display": 'none'
-    });
-  }
-}
-
-
 /**
  * Build the setting formular by displaying the current value in the form fields
  */
