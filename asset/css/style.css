@@ -445,7 +445,7 @@ body {
     margin-bottom: 40px; }
   .starting-popup p {
     margin-bottom: 15px;
-    color: #cccccc; }
+    color: #7A7B7D; }
 
 .window-popup#example-module, .window-popup#challenges-module {
   display: none; }
@@ -496,14 +496,21 @@ body {
   display: none;
   height: auto; }
   .window-popup#setting-module .content {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center; }
+    text-align: center; }
     .window-popup#setting-module .content p {
-      color: #7A7B7D; }
+      color: #7A7B7D;
+      margin: 10px; }
   .window-popup#setting-module .input-window {
-    margin-top: 15px; }
+    width: 50%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto; }
+    .window-popup#setting-module .input-window input[type=text] {
+      width: 100%;
+      padding: 10px 0px 10px 0px; }
+    .window-popup#setting-module .input-window button[type=submit] {
+      position: relative; }
 
 .full-screen {
   position: fixed;
@@ -550,3 +557,5 @@ body {
               background-image: url("../images/icon/github.png"); }
             #informations-module .info-content .info-autor > div > div a:last-child {
               background-image: url("../images/icon/linkedin.png"); }
+
+/*# sourceMappingURL=style.css.map */

@@ -132,7 +132,7 @@
     }
     p {
         margin-bottom: 15px;
-        color: #cccccc;
+        color: $grey-text;
     }
 }
 
@@ -200,14 +200,25 @@
         display: none;
         height: auto;
     .content{
-        p{color: $grey-text;}
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: center;
-        align-items: center;
+        text-align: center;
+        p{
+            color: $grey-text;
+            margin: 10px;
+        }
     }
     .input-window{
+        width: 50%;
         margin-top: 15px;
+        margin-bottom: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        input[type=text] {
+            width: 100%;
+            padding: 10px 0px 10px 0px;
+        }
+        button[type=submit] {
+            position: relative;
+        }
     }
 }
 

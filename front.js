@@ -114,7 +114,7 @@ $('#config').on('click', function (e) {
 $('#import').on('click', function (e) {
     e.preventDefault();
     if (Blockly.mainWorkspace.getAllBlocks().length > 1){
-      if (!confirm('Êtes vous sûr(e) de vouloir continuer ?')){
+      if (!confirm('Vous allez perdre votre travail. Êtes vous sûr(e) de vouloir continuer ?')){
         return;
       }
     }
@@ -151,7 +151,7 @@ $('#example').on('click', function () {
 
 $('#file').on('click',function(){
   if (Blockly.mainWorkspace.getAllBlocks().length > 1){
-    if (!confirm('Êtes vous sûr(e) de vouloir continuer ?')){
+    if (!confirm('Vous allez perdre votre travail. Êtes vous sûr(e) de vouloir continuer ?')){
       return;
     }
   }
