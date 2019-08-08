@@ -443,6 +443,9 @@ body {
   .starting-popup h1 {
     color: #D5D4D3;
     margin-bottom: 40px; }
+  .starting-popup p {
+    margin-bottom: 15px;
+    color: #cccccc; }
 
 .window-popup#example-module, .window-popup#challenges-module {
   display: none; }
