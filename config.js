@@ -10,7 +10,7 @@ let nbRows = config["rows"];
 let nbColumns = config["cols"];
 let project = config["project"];
 let language = config["language"];
-let simulation_enabled = config["simuation"];
+let simulation_enabled = config["simulation"];
 let disabled_pixels = config["disabled"];
 configName();
 
