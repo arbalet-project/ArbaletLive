@@ -501,16 +501,19 @@ body {
       color: #7A7B7D;
       margin: 10px; }
   .window-popup#setting-module .input-window {
-    width: 50%;
     margin-top: 15px;
     margin-bottom: 15px;
     margin-left: auto;
     margin-right: auto; }
+    .window-popup#setting-module .input-window input[type=number] {
+      width: 120px; }
     .window-popup#setting-module .input-window input[type=text] {
       width: 100%;
       padding: 10px 0px 10px 0px; }
     .window-popup#setting-module .input-window button[type=submit] {
-      position: relative; }
+      position: relative;
+      right: 0;
+      top: 0; }
 
 .full-screen {
   position: fixed;
