@@ -159,8 +159,11 @@
 }
 
 //Rotate Table Led
-.active-rotate{
-    transform: rotate(-90deg)
+.active-rotate {
+    transform: rotate(-90deg);
+}
+.active-rotate-revert {
+    transform: rotate(90deg) translate(-25px, 40px);
 }
 .active-rotate-button{
     transform: rotate(-90deg) !important;
@@ -214,7 +217,7 @@
         top: -31px;
         right: 23px;
         cursor: pointer;
-        transform: rotate(45deg)
+        transform: rotate(45deg);
     }
 }
 

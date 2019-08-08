@@ -280,6 +280,9 @@ body {
 .active-rotate {
   transform: rotate(-90deg); }
 
+.active-rotate-revert {
+  transform: rotate(90deg) translate(-25px, 40px); }
+
 .active-rotate-button {
   transform: rotate(-90deg) !important; }
 

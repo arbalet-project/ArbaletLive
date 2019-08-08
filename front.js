@@ -214,6 +214,7 @@ $('#user-name-input').keypress(function (event) {
 $('#turn-led').on('click', function(e){
     e.preventDefault();
     $('#led-table').toggleClass('active-rotate');
+    $('.led-coords').toggleClass('active-rotate-revert');
     $(this).toggleClass('active-rotate-button');
 });
 
