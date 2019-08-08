@@ -1,7 +1,7 @@
 /**
  * @fileoverview This file contains the setting application's handler
  */
- const softVersion = "1.1.0";
+ const softVersion = "1.1.1";
 
 let config= {};
 getconfig();
