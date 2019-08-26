@@ -6,6 +6,7 @@ let name = "";
 document.getElementById('user-name-input').value = generateNickname();
 document.getElementById('version').innerHTML += softVersion;
 let workspace;
+let lastbeacon = null;
 
 createLedTable(nbRows, nbColumns, disabled_pixels);
 initWorkspace();
